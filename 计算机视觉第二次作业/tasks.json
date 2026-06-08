@@ -1,0 +1,28 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "构建 OpenCV 项目 (g++)",
+            "command": "/usr/bin/g++",
+            "args": [
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}",
+                "-I/usr/include/opencv4",                    // ← 关键：添加 include 路径
+                "`pkg-config --cflags --libs opencv4`",
+                "-std=c++17"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": ["$gcc"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "g++ 编译 OpenCV 程序"
+        }
+    ]
+}
